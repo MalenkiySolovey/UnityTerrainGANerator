@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unity-terrain-ganerator"
+version = "0.1.0"
+description = "Semantic biome map to Unity Terrain pipeline with PyTorch, ONNX, and Unity."
+requires-python = ">=3.11,<3.13"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["artifacts", "data", ".venv", ".python", "unity/Library"]

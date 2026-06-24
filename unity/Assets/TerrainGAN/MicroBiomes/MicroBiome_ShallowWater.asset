@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1409981c6581b640b67e236871665e1, type: 3}
+  m_Name: MicroBiome_ShallowWater
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Biomes.BiomeDefinition
+  biomeName: shallowwater
+  microBiomeId: 101
+  macroClassIndex: 0
+  inputColor:
+    serializedVersion: 2
+    rgba: 4292585791
+  macroInputColor:
+    serializedVersion: 2
+    rgba: 4292316433
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: 0cae49d7098c90e42a9fc64817aa6c07, type: 2}
+  terrainLayerWeights:
+  - 1
+  treePrefabs: []
+  detailPrefabs:
+  - {fileID: 438363906349021994, guid: f16b4152ac5ee04498b9a3d3575caba0, type: 3}
+  - {fileID: 1239245152778751564, guid: 96a9e608862d74b41b20283944e821dc, type: 3}
+  rockPrefabs:
+  - {fileID: 2023959838994196418, guid: 345cf04d6ac9eb045b0fbca9a50bcb53, type: 3}
+  heightRange: {x: 0, y: 0.24}
+  slopeRange: {x: 0, y: 10}
+  treeDensity: 0
+  detailDensity: 0
+  rockDensity: 0
+  noiseScale: 32
+  treeScaleRange: {x: 0.75, y: 1.35}
+  objectScaleRange: {x: 0.65, y: 1.45}
+  placementJitter: 0.9
+  alignObjectsToTerrainNormal: 1
+  normalAlignment: 0.85
+  seedOffset: 10201
+  inheritMacroPlacement: 1
+  placement:
+    terrainLayers: []
+    densityMultiplier: 0.7
+    normalizedHeightRange: {x: 0, y: 1}
+    slopeDegreesRange: {x: 0, y: 90}
+    objectRules:
+    - ruleName: Shallow Lilies
+      enabled: 1
+      category: 1
+      prefab: {fileID: 438363906349021994, guid: f16b4152ac5ee04498b9a3d3575caba0, type: 3}
+      densityPerSquareKm: 28
+      normalizedHeightRange: {x: 0, y: 0.25}
+      slopeDegreesRange: {x: 0, y: 7}
+      uniformScaleRange: {x: 0.8, y: 1.25}
+      minSpacingMeters: 4.5
+      noiseScale: 3.5
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Shallow Rocks
+      enabled: 1
+      category: 2
+      prefab: {fileID: 2023959838994196418, guid: 345cf04d6ac9eb045b0fbca9a50bcb53, type: 3}
+      densityPerSquareKm: 8
+      normalizedHeightRange: {x: 0, y: 0.28}
+      slopeDegreesRange: {x: 0, y: 12}
+      uniformScaleRange: {x: 0.7, y: 1.25}
+      minSpacingMeters: 7
+      noiseScale: 1.25
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85

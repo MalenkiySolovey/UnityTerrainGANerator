@@ -1,0 +1,22 @@
+biomes:
+  - id: 0
+    name: water
+    color: [34, 116, 188]
+  - id: 1
+    name: sand
+    color: [226, 201, 112]
+  - id: 2
+    name: grass
+    color: [88, 154, 68]
+  - id: 3
+    name: dirt
+    color: [137, 83, 43]
+  - id: 4
+    name: snow
+    color: [220, 235, 240]
+  - id: 5
+    name: rock
+    color: [120, 120, 120]
+  - id: 6
+    name: mountain
+    color: [80, 80, 80]

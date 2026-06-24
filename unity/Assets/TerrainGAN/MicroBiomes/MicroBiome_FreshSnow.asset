@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1409981c6581b640b67e236871665e1, type: 3}
+  m_Name: MicroBiome_FreshSnow
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Biomes.BiomeDefinition
+  biomeName: freshsnow
+  microBiomeId: 500
+  macroClassIndex: 4
+  inputColor:
+    serializedVersion: 2
+    rgba: 4293390062
+  macroInputColor:
+    serializedVersion: 2
+    rgba: 4290103526
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: 0298d8c4d34419249b03b2bbf1da7795, type: 2}
+  terrainLayerWeights:
+  - 1
+  treePrefabs: []
+  detailPrefabs: []
+  rockPrefabs:
+  - {fileID: 3428975431903934716, guid: d3272bf8ce86b2d44a83e3d21423fed6, type: 3}
+  - {fileID: 8898577777265950216, guid: 817453b0b135ad34fba3abc24dea757a, type: 3}
+  heightRange: {x: 0.62, y: 1}
+  slopeRange: {x: 0, y: 38}
+  treeDensity: 0
+  detailDensity: 0.02
+  rockDensity: 0
+  noiseScale: 30
+  treeScaleRange: {x: 0.75, y: 1.35}
+  objectScaleRange: {x: 0.65, y: 1.45}
+  placementJitter: 0.9
+  alignObjectsToTerrainNormal: 1
+  normalAlignment: 0.85
+  seedOffset: 50500
+  inheritMacroPlacement: 1
+  placement:
+    terrainLayers: []
+    densityMultiplier: 0.45
+    normalizedHeightRange: {x: 0, y: 1}
+    slopeDegreesRange: {x: 0, y: 90}
+    objectRules:
+    - ruleName: Snow Stones
+      enabled: 1
+      category: 2
+      prefab: {fileID: 3428975431903934716, guid: d3272bf8ce86b2d44a83e3d21423fed6, type: 3}
+      densityPerSquareKm: 10
+      normalizedHeightRange: {x: 0.25, y: 1}
+      slopeDegreesRange: {x: 2, y: 46}
+      uniformScaleRange: {x: 0.6, y: 1.25}
+      minSpacingMeters: 9
+      noiseScale: 1.25
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85

@@ -1,0 +1,49 @@
+# Python
+.venv/
+.python/
+.tools/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+*.log
+
+# Dataset and generated training artifacts
+data/raw/*
+data/processed/*
+!data/raw/README.md
+!data/processed/README.md
+artifacts/checkpoints/*
+artifacts/onnx/*
+artifacts/previews/*
+artifacts/reports/*
+!artifacts/checkpoints/README.md
+!artifacts/onnx/README.md
+!artifacts/previews/README.md
+!artifacts/reports/README.md
+
+# Unity generated files
+unity/Library/
+unity/Temp/
+unity/Obj/
+unity/Build/
+unity/Builds/
+unity/Logs/
+unity/UserSettings/
+unity/.vs/
+unity/*.csproj
+unity/*.sln
+unity/*.slnx
+unity/.idea/
+unity/Assets/TerrainGAN/Exports/*
+
+# OS/editor
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak

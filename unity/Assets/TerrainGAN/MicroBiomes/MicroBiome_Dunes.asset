@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1409981c6581b640b67e236871665e1, type: 3}
+  m_Name: MicroBiome_Dunes
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Biomes.BiomeDefinition
+  biomeName: dunes
+  microBiomeId: 201
+  macroClassIndex: 1
+  inputColor:
+    serializedVersion: 2
+    rgba: 4285512919
+  macroInputColor:
+    serializedVersion: 2
+    rgba: 4288406497
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: d28e50032c1f78d429f3984fe04a49f0, type: 2}
+  terrainLayerWeights:
+  - 1
+  treePrefabs: []
+  detailPrefabs:
+  - {fileID: 7091094663246668338, guid: abdb72394c26c064fada22f4a61618d4, type: 3}
+  - {fileID: 644261101614455020, guid: 5a3d9d2eb7c012f47aec0c80755f5fef, type: 3}
+  - {fileID: 897620292349326402, guid: 131e5dcd62deb5b46a472ba4a23f6547, type: 3}
+  rockPrefabs:
+  - {fileID: 2023959838994196418, guid: 345cf04d6ac9eb045b0fbca9a50bcb53, type: 3}
+  - {fileID: 3428975431903934716, guid: d3272bf8ce86b2d44a83e3d21423fed6, type: 3}
+  heightRange: {x: 0.05, y: 0.42}
+  slopeRange: {x: 0, y: 28}
+  treeDensity: 0
+  detailDensity: 0.04
+  rockDensity: 0.02
+  noiseScale: 45
+  treeScaleRange: {x: 0.75, y: 1.35}
+  objectScaleRange: {x: 0.65, y: 1.45}
+  placementJitter: 0.9
+  alignObjectsToTerrainNormal: 1
+  normalAlignment: 0.85
+  seedOffset: 20301
+  inheritMacroPlacement: 1
+  placement:
+    terrainLayers: []
+    densityMultiplier: 0.65
+    normalizedHeightRange: {x: 0, y: 1}
+    slopeDegreesRange: {x: 0, y: 90}
+    objectRules:
+    - ruleName: Dune Cactus
+      enabled: 1
+      category: 1
+      prefab: {fileID: 644261101614455020, guid: 5a3d9d2eb7c012f47aec0c80755f5fef, type: 3}
+      densityPerSquareKm: 9
+      normalizedHeightRange: {x: 0.04, y: 0.5}
+      slopeDegreesRange: {x: 0, y: 20}
+      uniformScaleRange: {x: 0.75, y: 1.25}
+      minSpacingMeters: 18
+      noiseScale: 3.5
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Dune Stones
+      enabled: 1
+      category: 2
+      prefab: {fileID: 3428975431903934716, guid: d3272bf8ce86b2d44a83e3d21423fed6, type: 3}
+      densityPerSquareKm: 12
+      normalizedHeightRange: {x: 0.04, y: 0.5}
+      slopeDegreesRange: {x: 0, y: 25}
+      uniformScaleRange: {x: 0.7, y: 1.35}
+      minSpacingMeters: 9
+      noiseScale: 1.25
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85

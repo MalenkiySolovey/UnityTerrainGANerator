@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1409981c6581b640b67e236871665e1, type: 3}
+  m_Name: MicroBiome_AlpineRock
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Biomes.BiomeDefinition
+  biomeName: alpinerock
+  microBiomeId: 700
+  macroClassIndex: 6
+  inputColor:
+    serializedVersion: 2
+    rgba: 4288588203
+  macroInputColor:
+    serializedVersion: 2
+    rgba: 4289707713
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: ab62a35ee6f02364fa987d83ed93b1b2, type: 2}
+  terrainLayerWeights:
+  - 1
+  treePrefabs:
+  - {fileID: 6218034800170764294, guid: 43b45e651ca526f4da89741580a7f520, type: 3}
+  detailPrefabs: []
+  rockPrefabs:
+  - {fileID: 4781713069174581245, guid: c14e3711d3c61e1488d1db57a317a9ee, type: 3}
+  - {fileID: 9072511237779961399, guid: 6154c20a7c5677e4ab5cf287757ebddc, type: 3}
+  - {fileID: 1685800877134282266, guid: a67bfe4a898880c4a8263672deec426d, type: 3}
+  - {fileID: 5485027003959413410, guid: c1e38785dd4c4cf49bd5d3b9ea783a92, type: 3}
+  heightRange: {x: 0.5, y: 1}
+  slopeRange: {x: 15, y: 75}
+  treeDensity: 0
+  detailDensity: 0.02
+  rockDensity: 0.2
+  noiseScale: 58
+  treeScaleRange: {x: 0.75, y: 1.35}
+  objectScaleRange: {x: 0.65, y: 1.45}
+  placementJitter: 0.9
+  alignObjectsToTerrainNormal: 1
+  normalAlignment: 0.85
+  seedOffset: 70700
+  inheritMacroPlacement: 1
+  placement:
+    terrainLayers: []
+    densityMultiplier: 1
+    normalizedHeightRange: {x: 0, y: 1}
+    slopeDegreesRange: {x: 0, y: 90}
+    objectRules:
+    - ruleName: Large Rock Scatter
+      enabled: 1
+      category: 2
+      prefab: {fileID: 9072511237779961399, guid: 6154c20a7c5677e4ab5cf287757ebddc, type: 3}
+      densityPerSquareKm: 30
+      normalizedHeightRange: {x: 0.28, y: 1}
+      slopeDegreesRange: {x: 12, y: 78}
+      uniformScaleRange: {x: 0.55, y: 1.55}
+      minSpacingMeters: 8
+      noiseScale: 1.25
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Tall Stone Scatter
+      enabled: 1
+      category: 2
+      prefab: {fileID: 1685800877134282266, guid: a67bfe4a898880c4a8263672deec426d, type: 3}
+      densityPerSquareKm: 14
+      normalizedHeightRange: {x: 0.3, y: 1}
+      slopeDegreesRange: {x: 12, y: 80}
+      uniformScaleRange: {x: 0.55, y: 1.35}
+      minSpacingMeters: 10
+      noiseScale: 1.25
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Sparse Alpine Pine
+      enabled: 1
+      category: 0
+      prefab: {fileID: 6218034800170764294, guid: 43b45e651ca526f4da89741580a7f520, type: 3}
+      densityPerSquareKm: 2
+      normalizedHeightRange: {x: 0.25, y: 0.78}
+      slopeDegreesRange: {x: 0, y: 26}
+      uniformScaleRange: {x: 0.75, y: 1.15}
+      minSpacingMeters: 28
+      noiseScale: 1.25
+      noiseInfluence: 0.55
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 0
+      normalAlignment: 0.35
+      randomYaw: 1
+      placementJitter: 0.85

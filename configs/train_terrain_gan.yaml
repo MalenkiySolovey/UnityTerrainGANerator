@@ -1,0 +1,321 @@
+project:
+  name: unity_terrain_ganerator
+  stage: terrain_gan_feature_supervised_256
+
+data:
+  root: data/raw/archive/_dataset
+  train_split: data/splits/train.csv
+  val_split: data/splits/val.csv
+  image_size: 256
+  macro_classes: 7
+  control_maps:
+    enabled: true
+    channels:
+      - height_prior
+      - detail_budget
+      - boundary_distance
+      - semantic_complexity
+    dropout_probability: 0.12
+    smoothing_kernel_size: 5
+    height_prior_by_class: [0.05, 0.22, 0.36, 0.48, 0.66, 0.78, 0.90]
+    detail_budget_by_class: [0.10, 0.28, 0.38, 0.50, 0.58, 0.74, 0.88]
+    boundary_center_by_class: [0.0, 0.30, 0.40, 0.50, 0.68, 0.82, 1.0]
+    boundary_distance_steps: 16
+    semantic_complexity_kernel_size: 9
+
+model:
+  name: terrain_gan_feature_supervised
+  input_channels: 11
+  output_mode: terrain4
+  base_channels: 32
+  noise_dim: 16
+  height_activation: tanh
+  output_activation_mode: original_raw
+  latent_mode: tiled
+  semantic_resize_mode: bilinear
+  semantic_class_channels: 7
+  noise_injection_count: 1
+  noise_start_block: 0
+  noise_feature_strength: 0.0
+  noise_map_mode: internal_original
+  norm_before_first_conv: false
+  norm_before_second_conv: false
+  modulation_mode: tanh
+  modulation_strength: 0.5
+  height_detail_branch: false
+  height_detail_strength: 0.0
+  height_detail_hidden_channels: 32
+  height_detail_seed_channels: 8
+  height_detail_seed_size: 8
+  height_detail_pattern_channels: 4
+  height_detail_highpass_kernel: 9
+  height_detail_roughness_floor: 0.12
+  height_detail_water_channel: -1
+  height_detail_water_flatness_channel: -1
+  height_detail_roughness_channel: 8
+  height_detail_detach_inputs: true
+  height_detail_shadow_source: base
+  structure_detail_branch: true
+  structure_detail_strength: 0.16
+  structure_detail_hidden_channels: 32
+  structure_detail_seed_channels: 8
+  structure_detail_seed_size: 16
+  structure_detail_procedural_mix: 0.30
+  structure_detail_highpass_kernel: 9
+  structure_detail_roughness_floor: 0.14
+  structure_ridge_lift: 0.15
+  structure_valley_cut: 0.17
+  structure_drainage_cut: 0.18
+  structure_micro_detail: 0.050
+  structure_seed_micro_strength: 0.012
+  structure_spectral_prior_strength: 0.016
+  structure_spectral_prior_ridged_mix: 0.55
+  structure_spectral_prior_bandpass_kernel: 7
+  structure_spectral_prior_broad_kernel: 31
+  structure_cell_size: 16
+  structure_control_mode: general_relief
+  structure_height_prior_channel: 7
+  structure_detail_budget_channel: 8
+  structure_boundary_distance_channel: 9
+  structure_semantic_complexity_channel: 10
+  structure_control_adapter_channels: 16
+
+shadow:
+  mode: original_lab
+  base_channels: 32
+  slope_scale: 1.0
+  residual_strength: 1.0
+  zero_init_last: false
+  input_is_raw: true
+
+discriminator:
+  base_channels: 96
+  scales: [1.0, 0.25, 0.0625]
+  use_spectral_norm: true
+  use_instance_norm: false
+  activation: selu
+  slope_mode: original_top_left
+  height_detail:
+    enabled: false
+    base_channels: 12
+    scales: [1.0, 0.25]
+    use_spectral_norm: true
+
+training:
+  batch_size: 4
+  amp: true
+  channels_last: false
+  allow_tf32: true
+  cudnn_benchmark: true
+  fused_adamw: true
+  num_workers: 0
+  epochs: 300
+  generator_learning_rate: 0.00008
+  discriminator_learning_rate: 0.00024
+  height_detail_discriminator_learning_rate: 0.00012
+  adam_beta1: 0.5
+  adam_beta2: 0.999
+  clip_grad_norm: 100.0
+  height_domain: signed
+  init_shadow_renderer_from_checkpoint: false
+  generator_warmup_epochs: 0
+  reconstruction_warmup_epochs: 3
+  warmup_texture_weight: 0.20
+  structure_detail_warmup_epochs: 3
+  structure_detail_ramp_epochs: 14
+  dynamic_generator_gating: true
+  reset_generator_gate_each_epoch: true
+  disable_generator_above: 2.0
+  enable_generator_below: 1.5
+  min_discriminator_steps_per_generator: 0
+  max_discriminator_only_steps: 2
+  ema_decay: 0.999
+  use_ema_for_validation: true
+  use_ema_for_preview: true
+  discriminator_augmentation:
+    enabled: true
+    probability: 0.05
+    translate: 4
+    cutout_ratio: 0.04
+    noise_std: 0.002
+  adaptive_discriminator_augmentation:
+    enabled: true
+    initial_probability: 0.10
+    min_probability: 0.0
+    max_probability: 0.30
+    target_real_confidence: 0.60
+    adjustment_speed: 0.04
+    update_interval_epochs: 1
+    translate: 4
+    cutout_ratio: 0.04
+    noise_std: 0.002
+  lr_decay:
+    enabled: false
+    start_epoch: 180
+    generator_min_lr: 0.000025
+    discriminator_min_lr: 0.000075
+    height_detail_discriminator_min_lr: 0.00004
+  phases:
+    - name: rgb_safe
+      start_epoch: 0
+      end_epoch: 3
+      loss:
+        height: 0.25
+        texture: 0.06
+        low_frequency_height: 0.10
+        frequency_height: 0.10
+        lab_gamut: 0.20
+        rgb_color: 0.75
+        terrain_detail_energy: 0.18
+        terrain_branch_morphology: 0.07
+        terrain_structure_feature_supervision: 0.00
+      training:
+        max_discriminator_only_steps: 2
+    - name: feature_teacher_ramp
+      start_epoch: 3
+      end_epoch: 17
+      loss:
+        height: 0.24
+        texture: 0.06
+        low_frequency_height: 0.10
+        frequency_height: 0.12
+        lab_gamut: 0.20
+        rgb_color: 0.75
+        terrain_detail_energy: 0.24
+        terrain_branch_morphology: 0.12
+        terrain_structure_feature_supervision: 0.025
+      training:
+        max_discriminator_only_steps: 2
+    - name: relief_engage
+      start_epoch: 17
+      end_epoch: 65
+      loss:
+        height: 0.22
+        texture: 0.06
+        low_frequency_height: 0.08
+        frequency_height: 0.15
+        lab_gamut: 0.20
+        rgb_color: 0.70
+        terrain_detail_energy: 0.32
+        terrain_branch_morphology: 0.16
+        terrain_structure_feature_supervision: 0.055
+      training:
+        max_discriminator_only_steps: 2
+    - name: relief_push
+      start_epoch: 65
+      end_epoch: 145
+      generator_lr_scale: 0.90
+      discriminator_lr_scale: 0.85
+      loss:
+        height: 0.20
+        texture: 0.055
+        low_frequency_height: 0.06
+        frequency_height: 0.18
+        lab_gamut: 0.20
+        rgb_color: 0.62
+        terrain_detail_energy: 0.38
+        terrain_branch_morphology: 0.20
+        terrain_structure_feature_supervision: 0.075
+      training:
+        max_discriminator_only_steps: 1
+    - name: polish
+      start_epoch: 145
+      generator_lr_scale: 0.50
+      discriminator_lr_scale: 0.60
+      loss:
+        height: 0.22
+        texture: 0.06
+        low_frequency_height: 0.08
+        frequency_height: 0.13
+        lab_gamut: 0.20
+        rgb_color: 0.72
+        terrain_detail_energy: 0.30
+        terrain_branch_morphology: 0.14
+        terrain_structure_feature_supervision: 0.040
+      training:
+        max_discriminator_only_steps: 2
+  periodic_checkpoint_interval: 10
+  reset_best_metric_on_resume: false
+  save_best_detail_checkpoint: true
+  best_score_detail_target_ratio: 0.34
+  best_score_detail_under_weight: 0.06
+  best_score_detail_max_ratio: 0.46
+  best_score_detail_over_weight: 0.05
+  best_score_texture_ceiling: 0.106
+  best_score_texture_over_weight: 2.0
+  best_score_height_ceiling: 0.062
+  best_score_height_over_weight: 1.0
+  checkpoint_dir: artifacts/checkpoints/terrain_gan
+  preview_dir: artifacts/previews/terrain_gan
+  metrics_path: artifacts/reports/terrain_gan_metrics.csv
+  seed: 42
+  preview_seed: 12345
+  timing:
+    enabled: false
+    warmup_steps: 5
+    log_every_steps: 20
+
+preview:
+  summary_samples: 3
+  summary_include_zero_noise: true
+  summary_seed_values: [12345, 23456]
+  summary_max_seed_variants: 2
+  save_individual_previews: false
+  zero_noise_interval: 5
+  zero_noise_seed: 0
+  multi_seed_interval: 5
+  multi_seed_values: [12345, 23456, 34567, 45678]
+
+loss:
+  adversarial: 1.0
+  height_detail_adversarial: 0.0
+  height_detail_feature_matching: 0.0
+  feature_matching: 0.5
+  height: 0.25
+  texture: 0.06
+  height_perceptual: 0.0005
+  texture_perceptual: 0.002
+  lab_gamut: 0.20
+  rgb_color: 0.75
+  vgg_pretrained: true
+  vgg_layers: [0, 5, 10, 19]
+  l1_height: 0.0
+  gradient_height: 0.005
+  laplacian_height: 0.0
+  smoothness: 0.0
+  low_frequency_height: 0.10
+  low_frequency_factor: 16
+  frequency_height: 0.10
+  frequency_min: 0.06
+  terrain_detail_energy: 0.24
+  terrain_detail_energy_mode: local_grid
+  terrain_detail_energy_pooling: [8, 16, 32]
+  terrain_detail_energy_log_scale: 32.0
+  terrain_detail_energy_min_land_fraction: 0.15
+  terrain_detail_energy_moment_weight: 0.5
+  terrain_detail_energy_class_weights: [0.05, 0.12, 0.30, 0.42, 0.55, 0.85, 1.0]
+  terrain_branch_morphology: 0.12
+  terrain_branch_morphology_pooling: [8, 16, 32]
+  terrain_branch_morphology_log_scale: 24.0
+  terrain_branch_morphology_coherence_weight: 0.5
+  terrain_structure_feature_supervision: 0.020
+  terrain_structure_feature_channel_weights: [1.0, 1.0, 0.7, 0.8]
+  terrain_structure_feature_pooling: [4, 8, 16]
+  terrain_structure_feature_log_scale: 24.0
+  terrain_structure_feature_min_land_fraction: 0.10
+  terrain_structure_feature_semantic_class_channels: 7
+  terrain_structure_feature_detail_budget_channel: 8
+  terrain_structure_feature_detail_budget_floor: 0.25
+  noise_regularization: 0.02
+  noise_regularization_start_block: 4
+  terrain_water_flatness: 0.0
+  terrain_coast_sharpness: 0.0
+  water_class_index: 0
+
+export:
+  image_size: 256
+  opset: 15
+  include_noise_inputs: true
+  include_noise_map_input: false
+  dynamic_batch: false
+  dynamic_hw: false

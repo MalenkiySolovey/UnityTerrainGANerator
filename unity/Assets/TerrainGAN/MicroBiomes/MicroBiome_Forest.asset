@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1409981c6581b640b67e236871665e1, type: 3}
+  m_Name: MicroBiome_Forest
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Biomes.BiomeDefinition
+  biomeName: forest
+  microBiomeId: 301
+  macroClassIndex: 2
+  inputColor:
+    serializedVersion: 2
+    rgba: 4283007021
+  macroInputColor:
+    serializedVersion: 2
+    rgba: 4286295423
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: 2dd4e909a7a4dac48bc6f6df5d9fe1ed, type: 2}
+  terrainLayerWeights:
+  - 1
+  treePrefabs:
+  - {fileID: 4793255725100464803, guid: cbcea51b05d14d5438c5aac379fa173b, type: 3}
+  - {fileID: 8255163072933282630, guid: 09395120175cde14b8283804000d780a, type: 3}
+  - {fileID: 4916812761012315063, guid: 73bd33ed89dda4746898dee36aa3512e, type: 3}
+  detailPrefabs:
+  - {fileID: 6066146552486135769, guid: 0a90e24066c8795478d2d1142e52a81a, type: 3}
+  - {fileID: 8793003908392025737, guid: 898a03413c884844390826b0e386405d, type: 3}
+  - {fileID: 3478877023163488212, guid: a6240babfe7d65b4cb85adee715d9ff4, type: 3}
+  - {fileID: 3346450395886379502, guid: 0d8dff421dad5754596f80ef7a17351e, type: 3}
+  rockPrefabs:
+  - {fileID: 304728422925661351, guid: f38239fca5ea7b141b0dd98c0986fbee, type: 3}
+  heightRange: {x: 0.12, y: 0.65}
+  slopeRange: {x: 0, y: 35}
+  treeDensity: 0.75
+  detailDensity: 0.45
+  rockDensity: 0.02
+  noiseScale: 42
+  treeScaleRange: {x: 0.75, y: 1.35}
+  objectScaleRange: {x: 0.65, y: 1.45}
+  placementJitter: 0.9
+  alignObjectsToTerrainNormal: 1
+  normalAlignment: 0.85
+  seedOffset: 30401
+  inheritMacroPlacement: 1
+  placement:
+    terrainLayers: []
+    densityMultiplier: 1.2
+    normalizedHeightRange: {x: 0, y: 1}
+    slopeDegreesRange: {x: 0, y: 90}
+    objectRules:
+    - ruleName: Forest Canopy
+      enabled: 1
+      category: 0
+      prefab: {fileID: 4793255725100464803, guid: cbcea51b05d14d5438c5aac379fa173b, type: 3}
+      densityPerSquareKm: 22
+      normalizedHeightRange: {x: 0.07, y: 0.75}
+      slopeDegreesRange: {x: 0, y: 32}
+      uniformScaleRange: {x: 0.85, y: 1.35}
+      minSpacingMeters: 15
+      noiseScale: 1.25
+      noiseInfluence: 0.55
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 0
+      normalAlignment: 0.35
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Forest Pines
+      enabled: 1
+      category: 0
+      prefab: {fileID: 4916812761012315063, guid: 73bd33ed89dda4746898dee36aa3512e, type: 3}
+      densityPerSquareKm: 10
+      normalizedHeightRange: {x: 0.1, y: 0.78}
+      slopeDegreesRange: {x: 0, y: 30}
+      uniformScaleRange: {x: 0.8, y: 1.25}
+      minSpacingMeters: 18
+      noiseScale: 1.25
+      noiseInfluence: 0.55
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 0
+      normalAlignment: 0.35
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Forest Underbrush
+      enabled: 1
+      category: 1
+      prefab: {fileID: 8793003908392025737, guid: 898a03413c884844390826b0e386405d, type: 3}
+      densityPerSquareKm: 42
+      normalizedHeightRange: {x: 0.05, y: 0.72}
+      slopeDegreesRange: {x: 0, y: 30}
+      uniformScaleRange: {x: 0.8, y: 1.25}
+      minSpacingMeters: 4
+      noiseScale: 3.5
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Forest Mushrooms
+      enabled: 1
+      category: 1
+      prefab: {fileID: 3478877023163488212, guid: a6240babfe7d65b4cb85adee715d9ff4, type: 3}
+      densityPerSquareKm: 18
+      normalizedHeightRange: {x: 0.05, y: 0.7}
+      slopeDegreesRange: {x: 0, y: 22}
+      uniformScaleRange: {x: 0.65, y: 1.15}
+      minSpacingMeters: 2.2
+      noiseScale: 3.5
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85

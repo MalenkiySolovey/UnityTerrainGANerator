@@ -1,0 +1,93 @@
+export:
+  checkpoint: artifacts/checkpoints/terrain_gan/best.pt
+  output: artifacts/onnx/terrain_gan.onnx
+  opset: 15
+  image_size: 256
+  dynamic_batch: false
+  dynamic_hw: false
+  include_noise_inputs: true
+  include_noise_map_input: false
+  training_noise_replay: false
+  use_ema: true
+
+data:
+  image_size: 256
+  macro_classes: 7
+  control_maps:
+    enabled: true
+    channels:
+      - height_prior
+      - detail_budget
+      - boundary_distance
+      - semantic_complexity
+    smoothing_kernel_size: 5
+    height_prior_by_class: [0.05, 0.22, 0.36, 0.48, 0.66, 0.78, 0.90]
+    detail_budget_by_class: [0.10, 0.28, 0.38, 0.50, 0.58, 0.74, 0.88]
+    boundary_center_by_class: [0.0, 0.30, 0.40, 0.50, 0.68, 0.82, 1.0]
+    boundary_distance_steps: 16
+    semantic_complexity_kernel_size: 9
+
+model:
+  name: terrain_gan_feature_supervised
+  input_channels: 11
+  output_mode: terrain4
+  base_channels: 32
+  noise_dim: 16
+  height_activation: tanh
+  output_activation_mode: original_raw
+  latent_mode: tiled
+  semantic_resize_mode: bilinear
+  semantic_class_channels: 7
+  noise_injection_count: 1
+  noise_start_block: 0
+  noise_feature_strength: 0.0
+  noise_map_mode: internal_original
+  norm_before_first_conv: false
+  norm_before_second_conv: false
+  modulation_mode: tanh
+  modulation_strength: 0.5
+  height_detail_branch: false
+  height_detail_strength: 0.0
+  height_detail_hidden_channels: 32
+  height_detail_seed_channels: 8
+  height_detail_seed_size: 8
+  height_detail_pattern_channels: 4
+  height_detail_highpass_kernel: 9
+  height_detail_roughness_floor: 0.12
+  height_detail_water_channel: -1
+  height_detail_water_flatness_channel: -1
+  height_detail_roughness_channel: 8
+  height_detail_detach_inputs: true
+  height_detail_shadow_source: base
+  structure_detail_branch: true
+  structure_detail_strength: 0.16
+  structure_detail_hidden_channels: 32
+  structure_detail_seed_channels: 8
+  structure_detail_seed_size: 16
+  structure_detail_procedural_mix: 0.30
+  structure_detail_highpass_kernel: 9
+  structure_detail_roughness_floor: 0.14
+  structure_ridge_lift: 0.15
+  structure_valley_cut: 0.17
+  structure_drainage_cut: 0.18
+  structure_micro_detail: 0.050
+  structure_seed_micro_strength: 0.012
+  structure_spectral_prior_strength: 0.016
+  structure_spectral_prior_ridged_mix: 0.55
+  structure_spectral_prior_bandpass_kernel: 7
+  structure_spectral_prior_broad_kernel: 31
+  structure_cell_size: 16
+  structure_control_mode: general_relief
+  structure_height_prior_channel: 7
+  structure_detail_budget_channel: 8
+  structure_boundary_distance_channel: 9
+  structure_semantic_complexity_channel: 10
+  structure_control_adapter_channels: 16
+
+shadow:
+  mode: original_lab
+  base_channels: 32
+  slope_scale: 1.0
+  residual_strength: 1.0
+  zero_init_last: false
+  input_is_raw: true

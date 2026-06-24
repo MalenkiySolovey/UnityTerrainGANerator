@@ -1,0 +1,17 @@
+*.onnx filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.fbx binary
+*.prefab text eol=lf
+*.asset text eol=lf
+unity/Assets/New*Terrain*.asset filter=lfs diff=lfs merge=lfs -text
+unity/Assets/TerrainGAN/Terrain/*.asset filter=lfs diff=lfs merge=lfs -text
+*.meta text eol=lf
+*.cs text eol=lf
+*.py text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf

@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1409981c6581b640b67e236871665e1, type: 3}
+  m_Name: MicroBiome_DryDirt
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Biomes.BiomeDefinition
+  biomeName: drydirt
+  microBiomeId: 400
+  macroClassIndex: 3
+  inputColor:
+    serializedVersion: 2
+    rgba: 4282607524
+  macroInputColor:
+    serializedVersion: 2
+    rgba: 4283923129
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: ae4e0cef80498fb4a826680706e73232, type: 2}
+  terrainLayerWeights:
+  - 1
+  treePrefabs:
+  - {fileID: 5994597264413404444, guid: cced4dde3af4be3409f844d5db8bd2a6, type: 3}
+  detailPrefabs:
+  - {fileID: 7091094663246668338, guid: abdb72394c26c064fada22f4a61618d4, type: 3}
+  - {fileID: 378887336908978045, guid: 4ca876bc94bbd144798d71e1953dc7b9, type: 3}
+  - {fileID: 6825980064659859025, guid: f118d951700b46a46a4e62693466aa95, type: 3}
+  rockPrefabs:
+  - {fileID: 304728422925661351, guid: f38239fca5ea7b141b0dd98c0986fbee, type: 3}
+  - {fileID: 3428975431903934716, guid: d3272bf8ce86b2d44a83e3d21423fed6, type: 3}
+  heightRange: {x: 0.12, y: 0.68}
+  slopeRange: {x: 0, y: 40}
+  treeDensity: 0.03
+  detailDensity: 0.12
+  rockDensity: 0.03
+  noiseScale: 48
+  treeScaleRange: {x: 0.75, y: 1.35}
+  objectScaleRange: {x: 0.65, y: 1.45}
+  placementJitter: 0.9
+  alignObjectsToTerrainNormal: 1
+  normalAlignment: 0.85
+  seedOffset: 40400
+  inheritMacroPlacement: 1
+  placement:
+    terrainLayers: []
+    densityMultiplier: 0.75
+    normalizedHeightRange: {x: 0, y: 1}
+    slopeDegreesRange: {x: 0, y: 90}
+    objectRules:
+    - ruleName: Dry Dirt Cactus
+      enabled: 1
+      category: 1
+      prefab: {fileID: 7091094663246668338, guid: abdb72394c26c064fada22f4a61618d4, type: 3}
+      densityPerSquareKm: 15
+      normalizedHeightRange: {x: 0.08, y: 0.68}
+      slopeDegreesRange: {x: 0, y: 30}
+      uniformScaleRange: {x: 0.75, y: 1.25}
+      minSpacingMeters: 12
+      noiseScale: 3.5
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85
+    - ruleName: Dry Dirt Rocks
+      enabled: 1
+      category: 2
+      prefab: {fileID: 304728422925661351, guid: f38239fca5ea7b141b0dd98c0986fbee, type: 3}
+      densityPerSquareKm: 20
+      normalizedHeightRange: {x: 0.08, y: 0.72}
+      slopeDegreesRange: {x: 0, y: 38}
+      uniformScaleRange: {x: 0.75, y: 1.45}
+      minSpacingMeters: 8
+      noiseScale: 1.25
+      noiseInfluence: 0.35
+      verticalOffsetMeters: {x: 0, y: 0}
+      alignToTerrainNormal: 1
+      normalAlignment: 0.85
+      randomYaw: 1
+      placementJitter: 0.85

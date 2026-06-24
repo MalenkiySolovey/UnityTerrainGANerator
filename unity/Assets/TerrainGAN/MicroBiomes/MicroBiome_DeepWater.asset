@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1409981c6581b640b67e236871665e1, type: 3}
+  m_Name: MicroBiome_DeepWater
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Biomes.BiomeDefinition
+  biomeName: deepwater
+  microBiomeId: 100
+  macroClassIndex: 0
+  inputColor:
+    serializedVersion: 2
+    rgba: 4290010120
+  macroInputColor:
+    serializedVersion: 2
+    rgba: 4292316433
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: 626bc72741b53134c837476d45232738, type: 2}
+  terrainLayerWeights:
+  - 1
+  treePrefabs: []
+  detailPrefabs: []
+  rockPrefabs: []
+  heightRange: {x: 0, y: 0.18}
+  slopeRange: {x: 0, y: 12}
+  treeDensity: 0
+  detailDensity: 0
+  rockDensity: 0
+  noiseScale: 28
+  treeScaleRange: {x: 0.75, y: 1.35}
+  objectScaleRange: {x: 0.65, y: 1.45}
+  placementJitter: 0.9
+  alignObjectsToTerrainNormal: 1
+  normalAlignment: 0.85
+  seedOffset: 10100
+  inheritMacroPlacement: 0
+  placement:
+    terrainLayers: []
+    densityMultiplier: 0
+    normalizedHeightRange: {x: 0, y: 1}
+    slopeDegreesRange: {x: 0, y: 90}
+    objectRules: []

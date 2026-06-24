@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476d124025abc0e418ce9248a809f115, type: 3}
+  m_Name: DemoPreviewProfile
+  m_EditorClassIdentifier: Assembly-CSharp::UnityTerrainGANerator.Preview.TerrainGANPreviewProfile
+  palette: {fileID: 11400000, guid: f405c37af263be14abf8f4838a49c555, type: 2}
+  biomeTexture: {fileID: 2800000, guid: d75b42c040de98f45b916457767f5520, type: 3}
+  modelAsset: {fileID: 5022602860645237092, guid: 8bd985d753f00e444986df2189248895, type: 3}
+  backendType: 512
+  biomeInputName: biome_onehot
+  noiseInputName: noise
+  terrainOutputName: terrain
+  useNoiseInputs: 1
+  noiseSeed: 1226257655
+  noiseStrength: 1
+  noiseDistribution: 0
+  noiseDim: 16
+  useTrainingNoiseInputs: 1
+  trainingNoiseInputPrefix: train_noise_
+  trainingNoiseStrength: 0.215
+  inputResolution: 256
+  macroClassCount: 7
+  modelInputChannels: 11
+  textureMode: 2
+  generatedTextureRedChannel: 0
+  generatedTextureGreenChannel: 1
+  generatedTextureBlueChannel: 2
+  generatedHeightChannel: 3
+  textureSaturation: 2
+  textureBrightness: 0.892
+  textureContrast: 1.114
+  textureGamma: 0.598
+  textureTint: {r: 1, g: 1, b: 1, a: 1}
+  invertOutputWidth: 0
+  invertOutputLength: 0
+  terrainSize: {x: 1000, y: 220, z: 1000}
+  heightmapResolution: 1025
+  alphamapResolution: 1024
+  useDelayedLod: 0
+  paintTerrainLayers: 0
+  useTiledGeneration: 1
+  tileGrid: 4
+  tileOverlapPixels: 32
+  usePerTileVariation: 1
+  enableObjectPlacement: 1
+  clearObjectsWhenDisabled: 1
+  useLegacyShortcutPlacement: 0
+  useObjectRulesPlacement: 1
+  objectPlacementResolution: 128
+  objectRulePlacementResolution: 128
+  objectRuleDensityScale: 0.9
+  maxObjectRuleInstances: 1200
+  clamp01: 0
+  resize256To257: 1
+  remapWithPercentiles: 0
+  lowerPercentile: 0.02
+  upperPercentile: 0.98
+  outputMin: 0.02
+  outputMax: 0.42
+  smoothingIterations: 0
+  smoothingStrength: 0.65

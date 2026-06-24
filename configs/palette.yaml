@@ -1,0 +1,9 @@
+palette:
+  macro_classes:
+    - water
+    - sand
+    - grass
+    - dirt
+    - snow
+    - rock
+    - mountain
